@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RESULTADOS DE PARTIDOS</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#08111e;color:#f4f7fb;font-family:Arial,sans-serif}
+header{background:#10251f;padding:24px 16px;border-bottom:3px solid #35ed91}
+header h1{margin:0;font-size:26px}
+header h1 span{color:#35ed91}
+header p{color:#b7c9c2;margin-bottom:0}
+main{max-width:850px;margin:auto;padding:18px 14px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+button,select{padding:11px;border:1px solid #34465c;border-radius:8px;background:#18263a;color:white;cursor:pointer}
+button.active,button:hover{background:#35ed91;color:#07150d}
+h2{font-size:20px}
+.card{background:#111e30;border:1px solid #293b51;border-radius:12px;padding:15px;margin:12px 0}
+.league{color:#35ed91;font-size:13px;font-weight:bold;margin-bottom:12px}
+.match{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;text-align:center}
+.team{font-weight:bold}
+.score{font-size:25px;font-weight:bold}
+.status{color:#9eafc4;font-size:12px;margin-top:7px;text-align:center}
+.small{font-size:12px;color:#aebdd0}
+.lineup{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.player{padding:9px;background:#1a2a40;border-radius:7px;margin:5px 0;font-size:13px}
+.pitch{background:#176746;border:3px solid #76d6a3;border-radius:12px;padding:12px;text-align:center}
+.pitch .player{background:#ffffff20}
+.hidden{display:none}
+footer{text-align:center;color:#8797aa;padding:25px;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+<h1>⚽ RESULTADOS <span>DE PARTIDOS</span></h1>
+<p>Tu pasión por el fútbol, en un solo lugar.</p>
+</header>
+<main>
+<div class="card">
+<strong>🌍 FÚTBOL MUNDIAL</strong>
+<p class="small">Explora partidos, competiciones y alineaciones.</p>
+<select id="league" onchange="filterMatches()">
+<option value="Todas">Todas las ligas</option>
+<option value="Liga MX">Liga MX</option>
+<option value="Premier League">Premier League</option>
+<option value="LaLiga">LaLiga</option>
+<option value="Champions League">Champions League</option>
+<option value="Serie A">Serie A</option>
+<option value="Bundesliga">Bundesliga</option>
+</select>
+</div>
+<nav>
+<button class="active" onclick="showTab('scores',this)">⚽ Resultados</button>
+<button onclick="showTab('lineups',this)">👕 Alineaciones</button>
+<button onclick="showTab('info',this)">🏆 Competiciones</button>
+</nav>
+<section id="scores">
+<h2>📋 Marcadores</h2>
+<p class="small">Partidos de demostración, no son resultados en vivo.</p>
+<div id="matches">
+<div class="card match-card" data-league="Liga MX">
+<div class="league">🇲🇽 LIGA MX</div>
+<div class="match"><div class="team">América</div><div class="score">2 - 1</div><div class="team">Tigres</div></div>
+<div class="status">Ejemplo · Finalizado</div>
+</div>
+<div class="card match-card" data-league="Premier League">
+<div class="league">🏴 PREMIER LEAGUE</div>
+<div class="match"><div class="team">Arsenal</div><div class="score">1 - 1</div><div class="team">Liverpool</div></div>
+<div class="status">Ejemplo · Finalizado</div>
+</div>
+<div class="card match-card" data-league="LaLiga">
+<div class="league">🇪🇸 LALIGA</div>
+<div class="match"><div class="team">Real Madrid</div><div class="score">3 - 0</div><div class="team">Barcelona</div></div>
+<div class="status">Ejemplo · Finalizado</div>
+</div>
+<div class="card match-card" data-league="Champions League">
+<div class="league">⭐ CHAMPIONS LEAGUE</div>
+<div class="match"><div class="team">PSG</div><div class="score">2 - 2</div><div class="team">Bayern</div></div>
+<div class="status">Ejemplo · Finalizado</div>
+</div>
+<div class="card match-card" data-league="Serie A">
+<div class="league">🇮🇹 SERIE A</div>
+<div class="match"><div class="team">Milan</div><div class="score">1 - 0</div><div class="team">Inter</div></div>
+<div class="status">Ejemplo · Finalizado</div>
+</div>
+<div class="card match-card" data-league="Bundesliga">
+<div class="league">🇩🇪 BUNDESLIGA</div>
+<div class="match"><div class="team">Dortmund</div><div class="score">2 - 1</div><div class="team">Leverkusen</div></div>
+<div class="status">Ejemplo · Finalizado</div>
+</div>
+</div>
+</section>
+<section id="lineups" class="hidden">
+<h2>👕 Alineaciones de ejemplo</h2>
+<div class="card">
+<div class="league">AMÉRICA · FORMACIÓN 4-3-3</div>
+<div class="pitch">
+<div class="player">Delantero: Jugador 9</div>
+<div class="player">Extremo: Jugador 11 · Extremo: Jugador 7</div>
+<div class="player">Medio: Jugador 8 · Medio: Jugador 6 · Medio: Jugador 10</div>
+<div class="player">Defensa 3 · Defensa 4 · Defensa 2 · Defensa 5</div>
+<div class="player">🧤 Portero: Jugador 1</div>
+</div>
+<p class="small">Ejemplo visual. No representa la alineación oficial.</p>
+</div>
+<div class="card">
+<strong>Suplentes</strong>
+<div class="player">Suplente 12</div>
+<div class="player">Suplente 14</div>
+<div class="player">Suplente 18</div>
+</div>
+</section>
+<section id="info" class="hidden">
+<h2>🏆 Competiciones</h2>
+<div class="card">🇲🇽 Liga MX <p class="small">México</p></div>
+<div class="card">🏴 Premier League <p class="small">Inglaterra</p></div>
+<div class="card">🇪🇸 LaLiga <p class="small">España</p></div>
+<div class="card">⭐ UEFA Champions League <p class="small">Europa</p></div>
+<div class="card">🇮🇹 Serie A <p class="small">Italia</p></div>
+<div class="card">🇩🇪 Bundesliga <p class="small">Alemania</p></div>
+</section>
+</main>
+<footer>RESULTADOS DE PARTIDOS · Proyecto de fútbol</footer>
+<script>
+function showTab(id,btn){
+document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+}
+function filterMatches(){
+const league=document.getElementById('league').value;
+document.querySelectorAll('.match-card').forEach(card=>{
+card.style.display=league==='Todas'||card.dataset.league===league?'block':'none';
+});
+}
+</script>
+</body>
+</html>
